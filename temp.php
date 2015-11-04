@@ -9,10 +9,10 @@ else
 {
 $start=0;
 $end=10;
-}   
-include_once 'cn.php';
-?>
+} 
+?> 
 <?php
+/*include_once 'cn.php';*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
