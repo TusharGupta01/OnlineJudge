@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	if($_SESSION["sloggedin"]) {
-		header( 'Location: ./stu_dashboard.php' ) ; //One way to redirect
+		header( 'Location: ./dashboard.php' ) ; //One way to redirect
 		die();
 	}
 
@@ -16,7 +16,7 @@
 		.error {color: #FF0000}
 	</style>
     <title>
-        Student login - OnlineExaminer
+        Student login - OnlineJudge
    	</title>
    	   <link href="css/bootstrap.css" rel="stylesheet">
 </head>
@@ -31,11 +31,11 @@
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" style=" font-size:30px">Online Examiner</a>
+                    <a class="navbar-brand" style=" font-size:30px">Online Judge</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                    <li><a>Welcome Student !</a>
+                    <li><a>Welcome to the IIT Mandi's own Online Judge!</a>
                             </li>
                     </ul>
                 </div>
@@ -90,7 +90,7 @@
 				
 				$pwd = encode($_POST["pwd"]);
 				
-				$sql = "SELECT * FROM STUDENTS WHERE id = '$_POST[userid]' AND pwd = '$pwd'";
+				$sql = "SELECT * FROM user WHERE user_id = '$_POST[userid]' AND password = '$pwd'";
 				$result = $conn->query($sql);
 				if($result->num_rows == 1) {
 					$row = $result->fetch_assoc();
@@ -98,7 +98,7 @@
 					$_SESSION["userid"]   = $row["id"];
 					$_SESSION["currentStatus"] = $row["currentStatus"];	
 					$_SESSION["sloggedin"] = TRUE;
-					echo '<meta http-equiv="REFRESH" content="0" URL = "./stu_dashboard.php">';
+					echo '<meta http-equiv="REFRESH" content="0" URL = "./dashboard.php">'; //Takes us to the dashboard
 				} 
 				else {
 					$loginErr = "Wrong userID or password.";
@@ -116,7 +116,7 @@
     		<tr>
     			<td width = "78">User Id</td>
     			<td width = "6">:</td>
-				<td width = "150"><input name = "userid" type = "text" id = "userid"  maxlength = "7"></td>
+				<td width = "150"><input name = "userid" type = "text" id = "userid"></td>
 				<td width = "300"><span class = "error"> <?php echo $useridErr; ?> </span> </td>
     		</tr>
     		<tr>
@@ -133,9 +133,8 @@
 		    </tr>
     	</table>
    </form>
-   
+   <form><input type="button" class="btn btn-info" value="No account?" onClick="window.location.href='register.php'"></form>
+   <!-- TODO: Combine registeration on this page only>
    
   </body>
   </html>
-
-

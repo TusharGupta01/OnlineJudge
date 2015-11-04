@@ -2,7 +2,7 @@
 	$servername =      "localhost";
 	$username   =           "root";
 	$password   =        "abc.xyz";
-	$db         = "OnlineExaminer";
+	$db         = 	 "OnlineJudge";
 	
 	$conn = new mysqli($servername, $username, $password, $db);
 	
