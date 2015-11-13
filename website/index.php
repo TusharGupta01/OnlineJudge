@@ -94,9 +94,9 @@
 				$result = $conn->query($sql);
 				if($result->num_rows == 1) {
 					$row = $result->fetch_assoc();
-					$_SESSION["username"] = $row["name"];
-					$_SESSION["userid"]   = $row["id"];
-					$_SESSION["currentStatus"] = $row["currentStatus"];	
+					$_SESSION["username"] = $row["user_name"];
+					$_SESSION["userid"]   = $row["user_id"];
+					$_SESSION["currentStatus"] = $row["blocked"]; //Current status was used to check whether currently logged in or not	
 					$_SESSION["sloggedin"] = TRUE;
 					echo '<meta http-equiv="REFRESH" content="0" URL = "./dashboard.php">'; //Takes us to the dashboard
 				} 

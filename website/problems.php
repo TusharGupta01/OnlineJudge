@@ -10,7 +10,7 @@
 	
 <head>
 	<title>
-		User Dashboard - OnlineJudge
+		Problems - OnlineJudge
 	</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 </head>
@@ -20,10 +20,7 @@
 <?php include 'header.php';?>
 <div  align="center">
 <h2>
-<form><input type="button" class="btn btn-info" value="View Problems" onClick="window.location.href='problems.php'"></form>
-
-<h2>
-<form><input type="button" class="btn btn-info" value="View your solved problems" onClick="window.location.href='problem_attempted.php'"></form>
+<a href="./problems/ABC.php"></a>
 </h2>
 
 </div>

@@ -33,12 +33,13 @@
 						return $encpwd;
 					}
 					
-					/* Following code connects to db,
+					/*****************************************
+					* Following code connects to db,
 					* encodes the password,
 					* compare userID and encoded pwd with that stored in db,
 					* if matches redirects to logged in page else
 					* sets the loginErr message as wrong uid or pwd
-					*/
+					*****************************************/
 					
 					
 					include 'database_connect.php'; //Includes code to connect to databse
