@@ -19,9 +19,25 @@
 <body>
 <?php include 'header.php';?>
 <div  align="center">
-<h2>
-<a href="./problems/ABC.php"></a>
-</h2>
+<p>
+ <?php
+ include 'database_connect.php'; //Includes code to connect to databse
+$sql = "SELECT * FROM problems";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    echo "The marks of the tests that you have appeared for :";
+    while($row = $result->fetch_assoc()) {
+     echo "<br> Test ID: ". $row["testID"]. "&nbsp|&nbsp Marks: ". $row["marks"];
+    }
+} else {
+    echo "<h3>You have not appeared for any tests.</h3>";
+}
+
+?>
+</p>
+
 
 </div>
 

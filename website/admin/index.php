@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	if($_SESSION["floggedin"] == TRUE) {
-		header( 'Location: ./fac_dashboard.php' ) ; //One way to redirect
+		header( 'Location: ./admin_dashboard.php' ) ; //One way to redirect
 		die();
 	}
 
@@ -15,7 +15,7 @@
 		.error {color: #FF0000}
 	</style>
     <title>
-        Faculty login - OnlineExaminer
+        Admin login - OnlineExaminer
    	</title>
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
@@ -32,11 +32,11 @@
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" style=" font-size:30px">Online Examiner</a>
+                    <a class="navbar-brand" style=" font-size:30px">Online Judge</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                    <li><a>Welcome Faculty !</a>
+                    <li><a>Welcome Admin!</a>
                             </li>
                     </ul>
                 </div>
@@ -91,7 +91,7 @@
 				
 				$pwd = encode($_POST["pwd"]);
 				
-				$sql = "SELECT * FROM FACULTY WHERE id = '$_POST[userid]' AND pwd = '$pwd'";
+				$sql = "SELECT * FROM admin WHERE id = '$_POST[userid]' AND pwd = '$pwd'";
 				
 				$result = $conn->query($sql);
 
@@ -101,7 +101,7 @@
 					$_SESSION["username"] = $row["name"];
 					$_SESSION["currentStatus"] = $row["currentStatus"];	
 					$_SESSION["floggedin"] = TRUE;
-					echo '<meta http-equiv="REFRESH" content="0" URL = "./fac_dashboard.php">';
+					echo '<meta http-equiv="REFRESH" content="0" URL = "./admin_dashboard.php">';
 				} 
 				else { 
 					$loginErr = "Wrong userID or password.";
@@ -115,7 +115,7 @@
 	<form  method = "POST" action = "<?php echo $_SERVER["PHP_SELF"]; ?>" autocomplete = "off">
 		<table border="0" align="center" cellpadding="5" cellspacing="5" >
 			<tr>
-    	    	<th colspan= "3"> Faculty Login </th>
+    	    	<th colspan= "3"> Admin Login </th>
 			</tr>
     		<tr>
     			<td width = "78">User Id</td>
