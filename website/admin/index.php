@@ -91,14 +91,14 @@
 				
 				$pwd = encode($_POST["pwd"]);
 				
-				$sql = "SELECT * FROM admin WHERE id = '$_POST[userid]' AND pwd = '$pwd'";
+				$sql = "SELECT * FROM admin WHERE admin_id = '$_POST[userid]' AND password = '$pwd'";
 				
 				$result = $conn->query($sql);
 
 				if($result->num_rows == 1) {
 					$row = $result->fetch_assoc();
-					$_SESSION["userid"] = $row["id"];
-					$_SESSION["username"] = $row["name"];
+					$_SESSION["userid"] = $row["admin_id"];
+					$_SESSION["username"] = $row["admin_name"];
 					$_SESSION["currentStatus"] = $row["currentStatus"];	
 					$_SESSION["floggedin"] = TRUE;
 					echo '<meta http-equiv="REFRESH" content="0" URL = "./admin_dashboard.php">';
@@ -120,13 +120,13 @@
     		<tr>
     			<td width = "78">User Id</td>
     			<td width = "6">:</td>
-				<td width = "150"><input name = "userid" type = "text" id = "userid"  maxlength = "7"></td>
+				<td width = "150"><input name = "userid" type = "text" id = "userid"></td>
 				<td width = "300"><span class = "error"> <?php echo $useridErr; ?> </span> </td>
     		</tr>
     		<tr>
     			<td>Password</td>
     			<td>:</td>
-    			<td><input name = "pwd" type = "password" id = "password"  maxlength = "30"></td>
+    			<td><input name = "pwd" type = "password" id = "password"></td>
     			<td width = "300"><span class = "error"> <?php echo $pwdErr; ?> </span> </td>
     		</tr>
     		<tr>

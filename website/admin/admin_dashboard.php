@@ -10,7 +10,7 @@
 	
 <head>
 	<title>
-		Faculty Dashboard - OnlineExaminer
+		Admin Dashboard - OnlineExaminer
 	</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 </head>
@@ -19,6 +19,7 @@
 
 <?php
 		include 'header.php';
+
 		?>
 
 
@@ -26,12 +27,9 @@
 	<div  align="center">
 
 <h2>
-<form><input type="button" class="btn btn-info" value="Create new test" onClick="window.location.href='create_test.php'"></form>
+<form><input type="button" class="btn btn-info" value="Create new problem" onClick="window.location.href='new_problem.php'"></form>
 </h2>
 
-<h2>
-<form><input type="button" class="btn btn-info" value="Add new question" onClick="window.location.href='add_ques.php'"></form>
-</h2>
 
 </div>
 
