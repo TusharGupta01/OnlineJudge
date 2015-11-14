@@ -27,12 +27,18 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // output data of each row
-    echo "The marks of the tests that you have appeared for :";
+    $n = 'Name';
+    $pc = 'Problem Code';
+    echo "The available problems are: <br>";
+    echo '<pre>';
+    printf("<strong>%20s%50s\n</strong>", $pc, $n);
     while($row = $result->fetch_assoc()) {
-     echo "<br> Test ID: ". $row["testID"]. "&nbsp|&nbsp Marks: ". $row["marks"];
+    	$problem_id = '<a href=\'./problems/'. $row["problem_id"]. '\'>'. $row["problem_id"]. '</a>';
+    	printf("%20s%50s<br>", $problem_id , $row["problem_name"]);
     }
+    echo '</pre>';
 } else {
-    echo "<h3>You have not appeared for any tests.</h3>";
+    echo "<h3>No available problem.</h3>";
 }
 
 ?>

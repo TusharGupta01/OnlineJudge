@@ -34,9 +34,9 @@
                     <ul class="nav navbar-nav navbar-right">
                     <li><a>Welcome <?php echo $_SESSION["username"]; ?>!</a>
                             </li>
-                        <li><a href='../index.php'>Dashboard</a></li>
+                        <li><a href='../../index.php'>Dashboard</a></li>
                         <li>
-                            <a href='../logout.php'> Log Out</a></li>
+                            <a href='../../logout.php'> Log Out</a></li>
                     </ul>
                 </div>
             </div>
