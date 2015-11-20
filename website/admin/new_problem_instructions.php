@@ -26,9 +26,11 @@
 
 
 <div>
-
-Upload file should be HTML
-<!--TODO: More instructions go here -->
+<p>
+Upload file should be HTML. <br>
+Problem difficulty can be: 'e' for easy, 'm' for medium and 'h' for hard.
+<!--TODO: More instructions go here -->	
+</p>
 </div>
 
 

@@ -6,8 +6,7 @@
 	}
 
 ?>
-<html>
-	
+<html>	
 <head>
 	<title>
 		Admin Dashboard - OnlineExaminer
@@ -31,24 +30,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     /***********Following Lines check whether problem with same id or name exists already***********************/
     $sql = "SELECT * FROM problems WHERE problem_id = '$_POST[problemID]' OR problem_name='$_POST[problemName]'";
+    //echo "Checking for duplicay ".$sql;
     $result = $conn->query($sql);
     if($result->num_rows >= 1) {
         $row = $result->fetch_assoc();
-        if($row["problem_id"] == $_POST[problemID]) {
-            $problemIDErr = "ID exists! Please choose another";                        
+        if($row["problem_id"] == $_POST["problemID"]) {
+            echo "ID exists! Please choose another";                        
         }
-        if($row["problem_name"] == $_POST[problemName]) {
-            $problemIDErr = "Problem Name exists! Please choose another";
+        if($row["problem_name"] == $_POST["problemName"]) {
+            echo  "Problem Name exists! Please choose another";
         }
-        if($row["problem_id"] == $_POST[problemID] AND $row["problem_name"] == $_POST[problemName]) {
-            $problemIDErr = "ID and Name exists! Please choose another";                        
+        if($row["problem_id"] == $_POST["problemID"] AND $row["problem_name"] == $_POST["problemName"]) {
+            echo  "ID and Name exists! Please choose another";                        
         }
     }
     /**********If such problem does not exist try to save the file************************************************/
     else 
     {
         $target_dir = "../problems/". $_POST["problemID"] . "/" ; //The directory where file will be saved
-        $target_file = $target_dir . "index.php";
+        $target_file = $target_dir . "problem.html";
         if(mkdir($target_dir) == FALSE) {
             $problemIDErr = "Unable to create directory for the problem";
             die(); 
@@ -60,12 +60,33 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Sorry, there was an error uploading your file.";
         }
         //Save date(format)a to database
-        $sql = "INSERT INTO problems VALUES ('$_POST[problemID]','$_POST[problemName]', '$_POST[problemDifficulty]', 0, 0);";
+        $sql = "INSERT INTO problems VALUES ('$_POST[problemID]','$_POST[problemName]', '$_POST[problemDifficulty]', 0, 0, '$_POST[problemTime]', '$_POST[problemSpace]');";
         if($conn->query($sql) == TRUE)
-            echo "<h3>Question added succesfuly</h3>";
+            echo "<h4>Question added succesfuly!</h4>";
         else
         echo "Error adding the question. " . $conn->error;
+    	//if(isset($_POST['tags']){
+    		//echo var_dump($_POST['tags']);
+			$tags = $_POST['tags'];
+		    foreach ($tags as $value) {
+	            //echo "tags : ".$value."<br />";
+	            $sql = "INSERT INTO problemTags VALUES ('$_POST[problemID]', '$value')";
+	            if($conn->query($sql) == TRUE);
+		       /*     echo "Tag added succesfuly to database <br>";
+		        else
+		        	echo "Error adding the tag. " . $conn->error;*/
+			}
+		//}
+    	
         $conn->close();
+        $cmd = 'echo "<?php include \'../before_body.php\';" ' . '> ../problems/' . $_POST["problemID"] . '/index.php';
+        //echo $cmd;
+        exec($cmd);
+        $cmd = 'echo "include \'problem.html\';  " ' . ' >> ../problems/' . $_POST["problemID"] . '/index.php';
+        exec($cmd);
+        $cmd = 'echo "include \'../after_body.php\'; ?> " ' . ' >> ../problems/' . $_POST["problemID"] . '/index.php';
+        exec($cmd);
+
     }
 }
 ?>
@@ -95,7 +116,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     			
     		</tr>
             <tr>
-                <td>Maximum Time</td>
+                <td>Maximum Time(in sec)</td>
                 <td>:</td>
                 <td><input name = "problemTime" type = "number" id = "problemTime" min="0" max="10"></td>
             </tr>
@@ -111,31 +132,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             <tr>
                 <td></td>
                 <td></td>
-                <td><input type="checkbox" name="tag1" value="Dynamic Programming"> Dynamic Programming</td> 
+                <td><input type="checkbox" name="tags[]" value="Dynamic Programming"> Dynamic Programming</td> 
                 </td>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
-                <td><input type="checkbox" name="tag1" value="Recursive Programming"> Recursive Programming</td> 
+                <td><input type="checkbox" name="tags[]" value="Recursive Programming"> Recursive Programming</td> 
                 </td>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
-                <td><input type="checkbox" name="tag1" value="Data Structures"> Data Structures </td> 
+                <td><input type="checkbox" name="tags[]" value="Data Structures"> Data Structures </td> 
                 </td>
             </tr>
            <tr>
                 <td></td>
                 <td></td>
-                <td><input type="checkbox" name="tag1" value="Greedy Algorithms"> Greedy Algorithms </td> 
+                <td><input type="checkbox" name="tags[]" value="Greedy Algorithms"> Greedy Algorithms </td> 
                 </td>
             </tr>
            <tr>
                 <td></td>
                 <td></td>
-                <td><input type="checkbox" name="tag1" value="Divide and Conquer"> Divide and Conquer </td> 
+                <td><input type="checkbox" name="tags[]" value="Divide and Conquer"> Divide and Conquer </td> 
                 </td>
             </tr>
             <tr>
@@ -146,7 +167,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     			<td><input type="file" name="fileToUpload" id="fileToUpload"></td>
     		</tr>
             <tr>
-                <td colspan="3">Read the <a href="new_problem_instructions.php">instructions </a> for the specification of the problem file.</td>
+                <td colspan="3">Read the <a href="new_problem_instructions.php" target="_blank">instructions </a> for the specification of the problem file.</td>
             </tr>
     		
     		<tr>
@@ -161,4 +182,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 </body>
+</html>
 
