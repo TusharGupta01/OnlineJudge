@@ -104,11 +104,50 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 <td>:</td>
                 <td><input name = "problemSpace" type = "number" id = "problemSpace" min="0" max="1000"></td>
             </tr>
+            <tr>
+                <td>Problems is related to</td>
+                <td>:</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><input type="checkbox" name="tag1" value="Dynamic Programming"> Dynamic Programming</td> 
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><input type="checkbox" name="tag1" value="Recursive Programming"> Recursive Programming</td> 
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><input type="checkbox" name="tag1" value="Data Structures"> Data Structures </td> 
+                </td>
+            </tr>
+           <tr>
+                <td></td>
+                <td></td>
+                <td><input type="checkbox" name="tag1" value="Greedy Algorithms"> Greedy Algorithms </td> 
+                </td>
+            </tr>
+           <tr>
+                <td></td>
+                <td></td>
+                <td><input type="checkbox" name="tag1" value="Divide and Conquer"> Divide and Conquer </td> 
+                </td>
+            </tr>
+            <tr>
+            </tr>
     		<tr>
     			<td>Select Problem File to Upload</td>
     			<td>:</td>
     			<td><input type="file" name="fileToUpload" id="fileToUpload"></td>
     		</tr>
+            <tr>
+                <td colspan="3">Read the <a href="new_problem_instructions.php">instructions </a> for the specification of the problem file.</td>
+            </tr>
     		
     		<tr>
     			<td colspan="3" align="left"><input type = "submit" name = "submit" value = "Submit">  </td>
