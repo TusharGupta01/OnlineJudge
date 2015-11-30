@@ -5,12 +5,7 @@
 		die();
 	}
 	
-	if($_SESSION["sloggedin"]) {
-		include 'database_connect.php';
-		$sqldrop = "DROP TABLE $_SESSION[table_name];";
-		$conn->query($sqldrop);	
-	}
-	
+
 	session_unset(); //Removes all session variables
 	session_destroy(); //Destroys the session
 	

@@ -23,7 +23,7 @@
 <form><input type="button" class="btn btn-info" value="View Problems" onClick="window.location.href='problems.php'"></form>
 
 <h2>
-<form><input type="button" class="btn btn-info" value="View your solved problems" onClick="window.location.href='problem_attempted.php'"></form>
+<form><input type="button" class="btn btn-info" value="View your solved problems" onClick="window.location.href='show.php'"></form>
 </h2>
 
 </div>
