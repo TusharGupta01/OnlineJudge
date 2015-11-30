@@ -60,7 +60,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Sorry, there was an error uploading your file.";
         }
         //Save date(format)a to database
-        $sql = "INSERT INTO problemAttempted VALUES ('$_POST[userID]',$_POST[problemID]',now(), solvedintime, 0, '1','N', 'o(n)', 'o(n)','c');";
+        $sql = "INSERT INTO problemAttempted VALUES ('$_POST[userID]',$_POST[problemID]',now(), solvedintime, 0, 1,'N', 'o(n)', 'o(n)','c');";
         if($conn->query($sql) == TRUE)
             echo "<h4>Question added succesfuly!</h4>";
         else
