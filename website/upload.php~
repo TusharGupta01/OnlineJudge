@@ -60,20 +60,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Sorry, there was an error uploading your file.";
         }
         //Save date(format)a to database
-        $sql = "INSERT INTO problemAttempted VALUES ('$_POST[userID]',$_POST[problemID]',now(), solvedintime, 0, 1,'N', 'o(n)', 'o(n)','c');";
+        $sql = "INSERT INTO problemAttempted VALUES ('$_POST[userID]',$_POST[problemID]',now(), solvedintime, 0, 'N', 'o(n)', 'o(n)','c');";
         if($conn->query($sql) == TRUE)
             echo "<h4>Question added succesfuly!</h4>";
         else
         echo "Error adding the question. " . $conn->error;
 	}
 
-
-
 <div  align="center">
 
 <form  method = "POST" action = "<?php echo $_SERVER["PHP_SELF"]; ?>" autocomplete = "off" enctype="multipart/form-data">
 		<table border="0" align="center" cellpadding="5" cellspacing="5" >
-			
+			<tr>
+    	    	<th colspan= "3"> Submit probem </th>
+			</tr>
+    		<tr>
+    			<td>Select Problem File to Upload</td>
+    			<td>:</td>
+    			<td><input type="file" name="fileToUpload" id="fileToUpload"></td>
+    		</tr>
             <tr>
                 <td colspan="3">Read the <a href="new_problem_instructions.php" target="_blank">instructions </a> for the specification of the problem file.</td>
             </tr>
