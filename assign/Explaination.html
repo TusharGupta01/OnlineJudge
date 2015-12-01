@@ -1,0 +1,95 @@
+<html>
+<head>
+	<title>CS307-Projects-Group_21</title>
+	<link href="css/bootstrap.css" rel="stylesheet">
+</head>
+	
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="online.html">Online Judge</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+       <li class="active"><a href="motivation.html">Motivation <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="Problemstatement.html">Problem Statement <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="Explaination.html">Explaination<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="result.html">Result<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="limitation.html">Limitation<span class="sr-only">(current)</span></a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div style="padding-left:15px;padding-right:15px">
+First of all let's talk about the data base used for this platform.
+<br><br>
+<img src="onlinejudge.png" alt="Mountain View" style="width:100%;height:500px;"><br><br>
+Let's see point wise.<br><br>
+1. User table is for storing the data, personal to particular user.<br>
+2. Admin table is for storing the data, personal to particular Admin and it is isolated from user interface.<br>
+3. Problem table will be storing the problem id and problem name.<br>
+4. Problem Tag has the tags for each problem, it will contain content like dynamic programming, graph problem etc.<br>
+5. Problem attempted is having all the detail about that code.<br>
+6. Solution table contains the problems solved solved by a particular user.<br>
+</div>
+<br><br>
+<div style="padding-left:15px;padding-right:15px">
+  Now that we have an idea about the database let's have a look of on our website.<br> <br>
+  <div class="row">
+            <div class="col-md-6">
+                <a href="#">
+                    <img class="img-responsive" src="1.png" alt="">
+                </a>
+            </div>
+            <div class="col-md-6">
+                <h3>Dashboard of a user</h3>
+                <p>This is user dashboard and this page will be shown to user when he/she will login to the account. As you can see there are two buttons, first one is to view the problem currently present on the platform and the second one is to view all the problems that the user has submitted with the result.</p>
+            </div>
+  </div><br><br>
+  <div class="row">
+            <div class="col-md-6">
+                <a href="#">
+                    <img class="img-responsive" src="3.png" alt="">
+                </a>
+            </div>
+            <div class="col-md-6">
+                <h3>Dashboard of admin</h3>
+                <p>This is admin dashboad and will be shown to admin when he/she will login to the account. From this page admin can go to the page where he can add the problem.</p>
+            </div>
+  </div><br><br>
+  <div class="row">
+            <div class="col-md-6">
+                <a href="#">
+                    <img class="img-responsive" src="4.png" alt="">
+                </a>
+            </div>
+            <div class="col-md-6">
+                <h3>Problem adding page</h3>
+                <p>As you can see in the image on the left, this page is to add problem to the database. Admin can insert various features like max amount of space and time for that particular problem and can upload problem with its test cases.</p>
+            </div>
+  </div><br><br>
+  <div class="row">
+            <div class="col-md-6">
+                <a href="#">
+                    <img class="img-responsive" src="2.png" alt="">
+                </a>
+            </div>
+            <div class="col-md-6">
+                <h3>User submission page</h3>
+                <p>This is the page where user can see the problems and after clicking on any one of them user can see the problem and further can submit it to get the detailed report about his/her code.</p>
+            </div>
+  </div><br><br>
+</div>
+
+</body>
+</html>

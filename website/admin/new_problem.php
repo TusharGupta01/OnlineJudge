@@ -51,6 +51,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $target_file = $target_dir . "problem.html";
         $target_test_file1 = $target_dir . "test1";
         $target_test_file2 = $target_dir . "test2";
+        $target_sol_file1 = $target_dir . "test1.out";
+        $target_sol_file2 = $target_dir . "test2.out";
         if(mkdir($target_dir) == FALSE) {
             $problemIDErr = "Unable to create directory for the problem";
             die(); 
@@ -70,6 +72,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "The file ". basename( $_FILES["testFile"]["name"][1]). " has been uploaded.";
         } else {
             echo "Sorry, there was an error uploading test2 file.";
+        }
+        if (move_uploaded_file($_FILES["solutionFile"]["tmp_name"][0], $target_sol_file1)) {
+            echo "The file ". basename( $_FILES["solutionFile"]["name"][0]). " has been uploaded.";
+        } else {
+            echo "Sorry, there was an error uploading sol1 file.";
+        }
+        if (move_uploaded_file($_FILES["solutionFile"]["tmp_name"][1], $target_sol_file2)) {
+            echo "The file ". basename( $_FILES["solutionFile"]["name"][1]). " has been uploaded.";
+        } else {
+            echo "Sorry, there was an error uploading sol2 file.";
         }
         //Save date(format)a to database
         $sql = "INSERT INTO problems VALUES ('$_POST[problemID]','$_POST[problemName]', '$_POST[problemDifficulty]', 0, 0, '$_POST[problemTime]', '$_POST[problemSpace]');";
@@ -193,11 +205,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     			<td>:</td>
     			<td><input type="file" name="testFile[]"></td>
     		</tr>
+            <tr>
+                <td>Select Solution File1 to Upload</td>
+                <td>:</td>
+                <td><input type="file" name="solutionFile[]"></td>
+            </tr>
     		<tr>
     			<td>Select Test File2 to Upload</td>
     			<td>:</td>
     			<td><input type="file" name="testFile[]"></td>
     		</tr>
+            <tr>
+                <td>Select Solution File2 to Upload</td>
+                <td>:</td>
+                <td><input type="file" name="solutionFile[]"></td>
+            </tr>
     		<tr>
     			<td colspan="3" align="left"><input type = "submit" name = "submit" value = "Submit">  </td>
 		    </tr>
